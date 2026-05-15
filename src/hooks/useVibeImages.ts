@@ -7,18 +7,24 @@ export const useVibeImages = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const currentMoodRef = useRef<Mood | null>(null);
+  const requestIdRef = useRef<number>(0);
 
   const fetchImages = useCallback(async (mood: Mood) => {
     // Dedup logic: Don't fetch if already fetching the same mood
     if (loading && currentMoodRef.current === mood) return;
+
+    const requestId = Date.now();
+    requestIdRef.current = requestId;
 
     setLoading(true);
     setError(null);
     currentMoodRef.current = mood;
 
     try {
-      // Simulate network delay for premium feel (skeletons)
       await new Promise((resolve) => setTimeout(resolve, 1500));
+
+      // If a newer request started while we were waiting, abort this one
+      if (requestIdRef.current !== requestId) return;
 
       const newImages: VibeImage[] = Array.from({ length: 5 }).map((_, i) => ({
         id: `${mood}-${i}-${Date.now()}`,
@@ -27,7 +33,6 @@ export const useVibeImages = () => {
         mood,
       }));
 
-      // Pre-load images to ensure they show up together smoothly
       await Promise.all(
         newImages.map(
           (img) =>
@@ -40,12 +45,19 @@ export const useVibeImages = () => {
         )
       );
 
-      setImages(newImages);
+      // Final check before updating state
+      if (requestIdRef.current === requestId) {
+        setImages(newImages);
+      }
     } catch (err) {
-      setError('Failed to pull the vibes. The web is a bit shy today.');
+      if (requestIdRef.current === requestId) {
+        setError('Failed to pull the vibes. The web is a bit shy today.');
+      }
       console.error(err);
     } finally {
-      setLoading(false);
+      if (requestIdRef.current === requestId) {
+        setLoading(false);
+      }
     }
   }, [loading]);
 

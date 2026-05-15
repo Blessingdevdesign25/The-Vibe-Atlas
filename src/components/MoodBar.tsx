@@ -10,9 +10,9 @@ interface MoodBarProps {
 
 const moods: Mood[] = ['calm', 'loud', 'warm', 'lonely', 'bright'];
 
-const MoodBar: React.FC<MoodBarProps> = ({ onMoodSelect, activeMood, isLoading }) => {
+const MoodBar: React.FC<MoodBarProps> = React.memo(({ onMoodSelect, activeMood, isLoading }) => {
   return (
-    <div className="mood-bar-container">
+    <div className="mood-bar-container" role="tablist" aria-label="Mood selection">
       <div className="mood-bar glass">
         {moods.map((mood) => (
           <button
@@ -20,14 +20,17 @@ const MoodBar: React.FC<MoodBarProps> = ({ onMoodSelect, activeMood, isLoading }
             className={`mood-btn ${mood} ${activeMood === mood ? 'active' : ''}`}
             onClick={() => onMoodSelect(mood)}
             disabled={isLoading && activeMood === mood}
+            role="tab"
+            aria-selected={activeMood === mood}
+            aria-label={`Select ${mood} mood`}
           >
-            <span className="mood-dot"></span>
+            <span className="mood-dot" aria-hidden="true"></span>
             <span className="mood-label">{mood}</span>
           </button>
         ))}
       </div>
     </div>
   );
-};
+});
 
 export default MoodBar;
