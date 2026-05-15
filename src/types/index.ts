@@ -1,4 +1,5 @@
-export type Mood = 'calm' | 'loud' | 'warm' | 'lonely' | 'bright';
+export const MOODS = ['calm', 'loud', 'warm', 'lonely', 'bright'] as const;
+export type Mood = (typeof MOODS)[number];
 
 export interface VibeImage {
   id: string;

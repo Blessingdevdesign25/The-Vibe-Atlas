@@ -1,5 +1,5 @@
 import { useState, useCallback, useRef } from 'react';
-import { Mood, VibeImage } from '../types';
+import type { Mood, VibeImage } from '../types/index';
 import { buildImageUrl } from '../utils/buildImageUrl';
 
 export const useVibeImages = () => {

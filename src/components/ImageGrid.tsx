@@ -1,5 +1,5 @@
 import React from 'react';
-import { VibeImage } from '../types';
+import type { VibeImage } from '../types/index';
 import ImageCard from './ImageCard';
 import SkeletonCard from './SkeletonCard';
 import ErrorState from './ErrorState';

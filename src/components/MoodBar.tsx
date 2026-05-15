@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mood } from '../types';
+import type { Mood } from '../types/index';
 import '../styles/MoodBar.css';
 
 interface MoodBarProps {

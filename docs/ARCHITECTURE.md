@@ -26,6 +26,7 @@ The application follows a 4-state Finite State Machine:
 
 ## Behaviour Guarantees
 - **Deduplication**: The `useVibeImages` hook uses a `useRef` and check-blocks to prevent concurrent identical requests.
+- **Type Safety**: The application uses a robust `MOODS` constant with `as const` and explicit `import type` statements to ensure compatibility across all build environments and prevent runtime SyntaxErrors.
 - **Consistency**: All images in a grid always belong to the same mood.
 - **Responsiveness**: Grid layout adapts from 1 column (mobile) to 5 columns (desktop).
 

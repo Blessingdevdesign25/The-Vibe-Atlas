@@ -1,4 +1,4 @@
-import { Mood } from '../types';
+import type { Mood } from '../types/index';
 
 const moodKeywords: Record<Mood, string[]> = {
   calm: ['nature', 'minimal', 'sea', 'clouds', 'zen'],

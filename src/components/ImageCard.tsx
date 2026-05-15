@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { VibeImage } from '../types';
+import type { VibeImage } from '../types/index';
 import '../styles/ImageCard.css';
 
 interface ImageCardProps {

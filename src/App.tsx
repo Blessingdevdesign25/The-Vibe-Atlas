@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import MoodBar from './components/MoodBar';
 import ImageGrid from './components/ImageGrid';
 import { useVibeImages } from './hooks/useVibeImages';
-import { Mood } from './types';
+import type { Mood } from './types/index';
 import './styles/global.css';
 
 const App: React.FC = () => {
