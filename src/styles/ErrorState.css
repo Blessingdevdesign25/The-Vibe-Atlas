@@ -1,0 +1,47 @@
+.error-state {
+  width: 100%;
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 40px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.error-icon {
+  font-size: 48px;
+  margin-bottom: 8px;
+}
+
+.error-state h3 {
+  color: var(--text-primary);
+  font-size: 1.5rem;
+}
+
+.error-state p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+.retry-btn {
+  margin-top: 16px;
+  padding: 12px 24px;
+  background: white;
+  color: black;
+  border-radius: 30px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.85rem;
+}
+
+.retry-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
+}
+
+.retry-btn:active {
+  transform: translateY(0);
+}

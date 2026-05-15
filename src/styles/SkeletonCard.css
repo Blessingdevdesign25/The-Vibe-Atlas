@@ -1,0 +1,12 @@
+.skeleton-card {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .skeleton-card {
+    aspect-ratio: 3 / 4;
+  }
+}
